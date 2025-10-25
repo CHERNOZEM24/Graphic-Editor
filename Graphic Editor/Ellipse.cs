@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphic_Editor
 {
-    public class RectangleShape : Shape
+    public class EllipseShape : Shape
     {
         public Rectangle Bounds { get; set; }
 
@@ -15,14 +15,18 @@ namespace Graphic_Editor
             using (var fillBrush = new SolidBrush(FillColor))
             using (var strokePen = new Pen(StrokeColor, StrokeWidth))
             {
-                graphics.FillRectangle(fillBrush, Bounds);
-                graphics.DrawRectangle(strokePen, Bounds);
+                graphics.FillEllipse(fillBrush, Bounds);
+                graphics.DrawEllipse(strokePen, Bounds);
             }
         }
 
         public override bool Contains(Point point)
         {
-            return Bounds.Contains(point);
+            var center = new PointF(Bounds.X + Bounds.Width / 2f, Bounds.Y + Bounds.Height / 2f);
+            var dx = point.X - center.X;
+            var dy = point.Y - center.Y;
+            return (dx * dx) / (Bounds.Width * Bounds.Width / 4f) +
+                   (dy * dy) / (Bounds.Height * Bounds.Height / 4f) <= 1;
         }
 
         public override void Move(int offsetX, int offsetY)

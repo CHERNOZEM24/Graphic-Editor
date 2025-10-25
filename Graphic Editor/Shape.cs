@@ -9,7 +9,7 @@ namespace Graphic_Editor
 {
     public abstract class Shape
     {
-        private Color _fillColor = Color.Blue;
+        private Color _fillColor = Color.White;
         private Color _strokeColor = Color.Black;
         private float _strokeWidth = 2f;
 
@@ -33,5 +33,7 @@ namespace Graphic_Editor
 
         public abstract void Draw(Graphics graphics);
         public abstract bool Contains(Point point);
+
+        public abstract void Move(int offsetX, int offsetY);
     }
 }
