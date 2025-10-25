@@ -50,6 +50,18 @@ namespace Graphic_Editor
                 }
                 Invalidate();
             }
+            else if (_currentTool == ToolType.Delete) 
+            {
+                for (int i = _shapes.Count - 1; i >= 0; i--)
+                {
+                    if (_shapes[i].Contains(e.Location))
+                    {
+                        _shapes.RemoveAt(i);
+                        Invalidate();
+                        break;
+                    }
+                }
+            }
         }
 
         protected override void OnMouseMove(MouseEventArgs e)

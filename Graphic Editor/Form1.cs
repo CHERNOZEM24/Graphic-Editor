@@ -45,5 +45,10 @@ namespace Graphic_Editor
         {
             _toolPanel.SelectTool(ToolType.Triangle);
         }
+
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
+            _toolPanel.SelectTool(ToolType.Delete);
+        }
     }
 }

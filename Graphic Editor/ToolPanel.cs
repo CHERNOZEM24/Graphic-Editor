@@ -34,6 +34,7 @@ namespace Graphic_Editor
         Rectangle,
         Ellipse, 
         Triangle,
-        Line
+        Line,
+        Delete,
     }
 }
