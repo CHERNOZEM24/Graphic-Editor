@@ -52,6 +52,8 @@ namespace Graphic_Editor
         Ellipse,
         Triangle,
         Line,
+        Brush,
+        Eraser,
         Delete
     }
 }

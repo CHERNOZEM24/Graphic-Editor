@@ -81,5 +81,10 @@ namespace Graphic_Editor
             tsbColorFill.Image = colorImage;
             tsbColorFill.ToolTipText = $"Цвет заливки: {color.Name}";
         }
+
+        private void tsbBrush_Click(object sender, EventArgs e)
+        {
+            _toolPanel.SelectTool(ToolType.Brush);
+        }
     }
 }
