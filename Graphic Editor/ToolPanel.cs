@@ -9,6 +9,7 @@ namespace Graphic_Editor
     public class ToolPanel
     {
         private ToolType _currentTool = ToolType.Selection;
+        private Color _currentFillColor = Color.White; 
 
         public ToolType CurrentTool
         {
@@ -20,21 +21,37 @@ namespace Graphic_Editor
             }
         }
 
+        public Color CurrentFillColor
+        {
+            get => _currentFillColor;
+            set
+            {
+                _currentFillColor = value;
+                FillColorChanged?.Invoke(value);
+            }
+        }
+
         public void SelectTool(ToolType tool)
         {
             CurrentTool = tool;
         }
 
+        public void SetFillColor(Color color)
+        {
+            CurrentFillColor = color;
+        }
+
         public event Action<ToolType> ToolChanged;
+        public event Action<Color> FillColorChanged; 
     }
 
     public enum ToolType
     {
         Selection,
         Rectangle,
-        Ellipse, 
+        Ellipse,
         Triangle,
         Line,
-        Delete,
+        Delete
     }
 }

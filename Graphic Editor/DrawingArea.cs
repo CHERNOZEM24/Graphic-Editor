@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace Graphic_Editor
 {
     public class DrawingArea : Panel
@@ -15,6 +20,8 @@ namespace Graphic_Editor
         private bool _isMoving = false;
         private ToolType _currentTool = ToolType.Selection;
         private Shape _selectedShape;
+        
+        public Color CurrentFillColor { get; set; } = Color.White;
 
         public DrawingArea()
         {
@@ -28,6 +35,11 @@ namespace Graphic_Editor
             _currentTool = tool;
             _selectedShape = null;
             Invalidate();
+        }
+
+        public void SetFillColor(Color color)
+        {
+            CurrentFillColor = color;
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -97,7 +109,7 @@ namespace Graphic_Editor
                                 Math.Min(_startPoint.Y, e.Y),
                                 width,
                                 height),
-                            FillColor = Color.White,
+                            FillColor = CurrentFillColor,
                             StrokeColor = Color.Black,
                             StrokeWidth = 2
                         };
@@ -112,7 +124,7 @@ namespace Graphic_Editor
                                 Math.Min(_startPoint.Y, e.Y),
                                 width,
                                 height),
-                            FillColor = Color.White,
+                            FillColor = CurrentFillColor,
                             StrokeColor = Color.Black,
                             StrokeWidth = 2
                         };
@@ -125,7 +137,7 @@ namespace Graphic_Editor
                             Point1 = new Point(_startPoint.X + width / 2, _startPoint.Y),
                             Point2 = new Point(_startPoint.X, _startPoint.Y + height),
                             Point3 = new Point(_startPoint.X + width, _startPoint.Y + height),
-                            FillColor = Color.White,
+                            FillColor = CurrentFillColor,
                             StrokeColor = Color.Black,
                             StrokeWidth = 2
                         };

@@ -31,19 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             toolStrip1 = new ToolStrip();
             tsbCursor = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
+            Brush = new ToolStripButton();
+            Eraser = new ToolStripButton();
             tsbRectangle = new ToolStripButton();
             tsbEllipse = new ToolStripButton();
             tsbTriangle = new ToolStripButton();
             tsbDelete = new ToolStripButton();
+            tsbColorFill = new ToolStripButton();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { tsbCursor, toolStripButton2, toolStripButton3, tsbRectangle, tsbEllipse, tsbTriangle, tsbDelete });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tsbCursor, Brush, Eraser, tsbRectangle, tsbEllipse, tsbTriangle, tsbDelete, tsbColorFill });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(922, 27);
@@ -57,26 +58,26 @@
             tsbCursor.ImageTransparentColor = Color.Magenta;
             tsbCursor.Name = "tsbCursor";
             tsbCursor.Size = new Size(29, 24);
-            tsbCursor.Text = "toolStripButton1";
+            tsbCursor.Text = "Cursor";
             tsbCursor.Click += tsbCursor_Click;
             // 
-            // toolStripButton2
+            // Brush
             // 
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(29, 24);
-            toolStripButton2.Text = "toolStripButton2";
+            Brush.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            Brush.Image = (Image)resources.GetObject("Brush.Image");
+            Brush.ImageTransparentColor = Color.Magenta;
+            Brush.Name = "Brush";
+            Brush.Size = new Size(29, 24);
+            Brush.Text = "toolStripButton2";
             // 
-            // toolStripButton3
+            // Eraser
             // 
-            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(29, 24);
-            toolStripButton3.Text = "toolStripButton3";
+            Eraser.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            Eraser.Image = (Image)resources.GetObject("Eraser.Image");
+            Eraser.ImageTransparentColor = Color.Magenta;
+            Eraser.Name = "Eraser";
+            Eraser.Size = new Size(29, 24);
+            Eraser.Text = "toolStripButton3";
             // 
             // tsbRectangle
             // 
@@ -85,7 +86,7 @@
             tsbRectangle.ImageTransparentColor = Color.Magenta;
             tsbRectangle.Name = "tsbRectangle";
             tsbRectangle.Size = new Size(29, 24);
-            tsbRectangle.Text = "toolStripButton4";
+            tsbRectangle.Text = "Rectangle";
             tsbRectangle.Click += tsbRectangle_Click;
             // 
             // tsbEllipse
@@ -95,7 +96,7 @@
             tsbEllipse.ImageTransparentColor = Color.Magenta;
             tsbEllipse.Name = "tsbEllipse";
             tsbEllipse.Size = new Size(29, 24);
-            tsbEllipse.Text = "toolStripButton5";
+            tsbEllipse.Text = "Ellipse";
             tsbEllipse.Click += tsbEllipse_Click;
             // 
             // tsbTriangle
@@ -105,7 +106,7 @@
             tsbTriangle.ImageTransparentColor = Color.Magenta;
             tsbTriangle.Name = "tsbTriangle";
             tsbTriangle.Size = new Size(29, 24);
-            tsbTriangle.Text = "toolStripButton6";
+            tsbTriangle.Text = "Triangle";
             tsbTriangle.Click += tsbTriangle_Click;
             // 
             // tsbDelete
@@ -115,8 +116,18 @@
             tsbDelete.ImageTransparentColor = Color.Magenta;
             tsbDelete.Name = "tsbDelete";
             tsbDelete.Size = new Size(29, 24);
-            tsbDelete.Text = "toolStripButton1";
+            tsbDelete.Text = "Delete";
             tsbDelete.Click += tsbDelete_Click;
+            // 
+            // tsbColorFill
+            // 
+            tsbColorFill.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbColorFill.Image = (Image)resources.GetObject("tsbColorFill.Image");
+            tsbColorFill.ImageTransparentColor = Color.Magenta;
+            tsbColorFill.Name = "tsbColorFill";
+            tsbColorFill.Size = new Size(29, 24);
+            tsbColorFill.Text = "toolStripButton1";
+            tsbColorFill.Click += tsbColorFill_Click;
             // 
             // Form1
             // 
@@ -137,11 +148,12 @@
 
         private ToolStrip toolStrip1;
         private ToolStripButton tsbCursor;
-        private ToolStripButton toolStripButton2;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton Brush;
+        private ToolStripButton Eraser;
         private ToolStripButton tsbRectangle;
         private ToolStripButton tsbEllipse;
         private ToolStripButton tsbTriangle;
         private ToolStripButton tsbDelete;
+        private ToolStripButton tsbColorFill;
     }
 }
