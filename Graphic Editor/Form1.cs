@@ -23,12 +23,45 @@ namespace Graphic_Editor
             _toolPanel.FillColorChanged += (color) => _drawingArea.SetFillColor(color);
 
             UpdateColorButton(_toolPanel.CurrentFillColor);
+
+            SetupToolbarButtons();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
         }
 
+        private void SetupToolbarButtons()
+        {
+            if (toolStrip1.Items.Count == 0) return;
+
+            int buttonWidth = (toolStrip1.Width - 20) / toolStrip1.Items.Count; 
+
+            foreach (ToolStripItem item in toolStrip1.Items)
+            {
+                if (item is ToolStripButton button)
+                {
+                    button.AutoSize = false;
+                    button.Height = 45; 
+                    button.Width = buttonWidth;
+                    button.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                    button.TextImageRelation = TextImageRelation.ImageAboveText;
+                    button.Font = new Font("Segoe UI", 7F, FontStyle.Bold); 
+
+                    switch (button.Name)
+                    {
+                        case "tsbCursor": button.Text = "Курсор"; break;
+                        case "tsbBrush": button.Text = "Кисть"; break;
+                        case "tsbEraser": button.Text = "Ластик"; break;
+                        case "tsbRectangle": button.Text = "Прямоуг."; break;
+                        case "tsbEllipse": button.Text = "Круг"; break;
+                        case "tsbTriangle": button.Text = "Треуг."; break;
+                        case "tsbDelete": button.Text = "Удалить"; break;
+                        case "tsbColorFill": button.Text = "Цвет"; break;
+                    }
+                }
+            }
+        }
         private void tsbCursor_Click(object sender, EventArgs e)
         {
             _toolPanel.SelectTool(ToolType.Selection);
@@ -85,6 +118,11 @@ namespace Graphic_Editor
         private void tsbBrush_Click(object sender, EventArgs e)
         {
             _toolPanel.SelectTool(ToolType.Brush);
+        }
+
+        private void tsbEraser_Click(object sender, EventArgs e)
+        {
+            _toolPanel.SelectTool(ToolType.Eraser);
         }
     }
 }

@@ -43,11 +43,13 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.ImageScalingSize = new Size(32, 32);
+            toolStrip1.Height = 50;
             toolStrip1.Items.AddRange(new ToolStripItem[] { tsbCursor, tsbBrush, tsbEraser, tsbRectangle, tsbEllipse, tsbTriangle, tsbDelete, tsbColorFill });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(922, 27);
+            toolStrip1.Stretch = true;
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -68,7 +70,7 @@
             tsbBrush.ImageTransparentColor = Color.Magenta;
             tsbBrush.Name = "tsbBrush";
             tsbBrush.Size = new Size(29, 24);
-            tsbBrush.Text = "toolStripButton2";
+            tsbBrush.Text = "Brush";
             tsbBrush.Click += tsbBrush_Click;
             // 
             // tsbEraser
@@ -78,7 +80,8 @@
             tsbEraser.ImageTransparentColor = Color.Magenta;
             tsbEraser.Name = "tsbEraser";
             tsbEraser.Size = new Size(29, 24);
-            tsbEraser.Text = "toolStripButton3";
+            tsbEraser.Text = "Eraser";
+            tsbEraser.Click += tsbEraser_Click;
             // 
             // tsbRectangle
             // 
@@ -137,7 +140,7 @@
             ClientSize = new Size(922, 450);
             Controls.Add(toolStrip1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Graphic Editor";
             Load += Form1_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();

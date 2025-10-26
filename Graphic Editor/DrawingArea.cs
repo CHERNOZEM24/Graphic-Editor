@@ -1,12 +1,12 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Graphic_Editor
@@ -19,10 +19,14 @@ namespace Graphic_Editor
         private bool _isDrawing = false;
         private bool _isMoving = false;
         private bool _isBrushDrawing = false;
+        private bool _isErasing = false;
         private ToolType _currentTool = ToolType.Selection;
         private Shape _selectedShape;
         private FreehandShape _currentFreehand;
+        private EraserShape _currentEraser;
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color CurrentFillColor { get; set; } = Color.White;
 
         public DrawingArea()
@@ -87,6 +91,16 @@ namespace Graphic_Editor
                 _currentFreehand.Points.Add(e.Location);
                 _shapes.Add(_currentFreehand);
             }
+            else if (_currentTool == ToolType.Eraser)
+            {
+                _isErasing = true;
+                _currentEraser = new EraserShape
+                {
+                    EraserSize = 10f
+                };
+                _currentEraser.Points.Add(e.Location);
+                _shapes.Add(_currentEraser);
+            }
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -97,14 +111,17 @@ namespace Graphic_Editor
                 int offsetY = e.Location.Y - _previousMousePosition.Y;
 
                 _selectedShape.Move(offsetX, offsetY);
-
                 _previousMousePosition = e.Location;
-
                 Invalidate();
             }
             else if (_currentTool == ToolType.Brush && _isBrushDrawing && _currentFreehand != null)
             {
                 _currentFreehand.Points.Add(e.Location);
+                Invalidate();
+            }
+            else if (_currentTool == ToolType.Eraser && _isErasing && _currentEraser != null)
+            {
+                _currentEraser.Points.Add(e.Location);
                 Invalidate();
             }
         }
@@ -117,6 +134,11 @@ namespace Graphic_Editor
                 {
                     _isBrushDrawing = false;
                     _currentFreehand = null;
+                }
+                else if (_currentTool == ToolType.Eraser)
+                {
+                    _isErasing = false;
+                    _currentEraser = null;
                 }
                 else
                 {
